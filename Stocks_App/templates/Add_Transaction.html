@@ -1,0 +1,61 @@
+{% extends "index.html" %}
+
+{% block title %}
+    Add Transaction
+{% endblock %}
+
+{% block content %}
+    <form name="form" method="POST" action="{% url 'Add_transaction' %}">
+        {% csrf_token %}
+        <div style="margin-bottom: 10px;">
+            <label for="id" style="display: inline-block; width: 100px; text-align: right;">ID:</label>
+            <input type="text" id= "id" name= "id" style="width: 200px;" required><!-- required enforces that it must be filled -->
+        </div>
+        <div style="margin-bottom: 10px;">
+            {% csrf_token %}
+            <label for="transaction_sum" style="display: inline-block; width: 100px; text-align: right;">Transaction Sum:</label>
+            <input type="number" id="transaction_sum" name="transaction_sum" style="width: 200px;" required> <!-- required enforces that it must be filled -->
+        </div>
+        <div>
+            <button type="submit" style="padding: 8px 15px; background-color: #007bff; color: #fff; border: none; border-radius: 5px; cursor: pointer;">Submit</button>
+        </div>
+    </form>
+
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin: 20px auto;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+
+    <h1>Top 10 Transactions</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Investor ID</th>
+                <th>Transaction Sum</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in sql_res4C %}
+                <tr>
+                    <td>{{ row.tDate }}</td>
+                    <td>{{ row.ID }}</td>
+                    <td>{{ row.TAmount }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

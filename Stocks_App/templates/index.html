@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}
+    <title>Stocks Website</title>
+    {% endblock title %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: #333;
+            text-align: center;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+        }
+        header h1 {
+            margin: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .stock-photo {
+            margin-top: 50px;
+            max-width: 100%;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+        }
+    </style>
+        </head>
+<header>
+    <div class="container">
+        <h1>Stocks Website</h1>
+    </div>
+</header>
+{% block content %}
+<div class="container">
+    <img class="stock-photo" src="https://www.bankrate.com/2019/03/22142110/How-to-trade-stocks.jpg" alt="Stocks Photo" width="600" height="300">
+</div>
+{% endblock content %}
+<style>
+        /* Style for the links */
+        .fancy-link {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px;
+            left: 50%;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .fancy-link:hover {
+            background-color: #0056b3;
+        }
+    </style>
+<body>
+<a class="fancy-link" href="{% url 'index.html' %}">Home</a>
+<a class="fancy-link" href="{% url 'Query_Answers.html' %}">Query Answers</a>
+<a class="fancy-link" href="{% url 'Add_transaction' %}">Add Transaction</a>
+<a class="fancy-link" href="{% url 'Buy_stocks' %}">Buy Stocks</a>
+</body>
+<footer>
+    <div class="container">
+        <p>&copy; 2024 Stocks Website. All rights reserved. not that you will want to copy it anyway</p>
+    </div>
+</footer>
+</html>

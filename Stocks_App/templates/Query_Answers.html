@@ -1,0 +1,86 @@
+{% extends "index.html" %} {% block title %} Query Results {% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Query Answers</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin: 20px auto;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Query One:</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Total Spent</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in sql_res1 %}
+            <tr>
+                <td>{{ row.Name }}</td>
+                <td>{{ row.total_Spent }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h1>Query Two:</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in sql_res2 %}
+            <tr>
+                <td>{{ row.SYMBOL }}</td>
+                <td>{{ row.NAME }}</td>
+                <td>{{ row.QUANTITY }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+<h1>Query Three:</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Buyers Number</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in sql_res3 %}
+            <tr>
+                <td>{{ row.symbol }}</td>
+                <td>{{ row.buyers_number }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+{% endblock content %}
+
