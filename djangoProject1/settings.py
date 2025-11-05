@@ -74,14 +74,16 @@ WSGI_APPLICATION = 'djangoProject1.wsgi.application'
 
 DATABASES = {
     'default': {
+        # Using os.environ.get to pull sensitive data from environment variables for security.
         'ENGINE': 'mssql',
-        'NAME': 'alon0gilad',
-        'USER': 'alon0gilad',
-        'PASSWORD': 'Qwerty12!',
-        'HOST': 'techniondbcourse01.database.windows.net',
+        # Fallbacks are set to the original values, but the actual password must be set externally.
+        'NAME': os.environ.get('DB_NAME', 'alon0gilad'),
+        'USER': os.environ.get('DB_USER', 'alon0gilad'),
+        # CRITICAL: This pulls the real password. The fallback is a REDACTED placeholder.
+        'PASSWORD': os.environ.get('DB_PASSWORD', 'RED_A_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST', 'techniondbcourse01.database.windows.net'),
         'PORT': '1433',
-        'OPTIONS': {"driver": "ODBC Driver 17 for SQL Server",
-                    }
+        'OPTIONS': {"driver": "ODBC Driver 17 for SQL Server",}
     },
 }
 
